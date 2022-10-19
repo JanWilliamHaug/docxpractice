@@ -38,7 +38,7 @@ Text = docx.Document('SRS_ACE_Pump_X01.docx')
 #print m.groups()
 fullText = []
 for para in Text.paragraphs:
-    fullText.append(para.text[])
+    fullText.append(para.text)
 
 mystring =' '.join(map(str, fullText))
 print(mystring)

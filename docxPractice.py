@@ -6,11 +6,16 @@ from docx import Document
 from tkinter import *
 import re
 # from docx2python import docx2python
-import pandas as pd
+import os
+#import pandas as pd
+#import mlx.traceability
 
 
 excelFile = xw.Book("RTM.xlsx")
 excelFile.save('RTM.xlsx')
+
+#extensions = ['mlx.traceability']
+
 #excelFile = xw.Book()                #Creates an empty excel file
 #excelFile.save('report.xlsx')                     #Saves that excel file as "data1"
 
@@ -18,6 +23,18 @@ excelFile.save('RTM.xlsx')
 
 #Create a Docx file document object and pass the path to the Docx file
 Text = docx.Document('SRS_ACE_Pump_X01.docx')
+
+#staticPath = [os.path.join(os.path.dirname(mlx.traceability.Text), 'Software Requirement')]
+'''traceAttributes = {
+    'value': '^.*$',
+    'asil': '^(QM|[ABCD])$',
+    'non_functional': '^.{0}$',  # empty string
+}
+
+traceabiltiy_relationship_to_string = {
+    'value': 'ACE:SRS:1',
+    'asil': '[PUMP:PRS:1]',
+}'''
 
 #Create an empty data dictionary
 #data = {}
@@ -74,11 +91,11 @@ for paragraph in Text.paragraphs:
     find_("105", paragraph)
     find_("110", paragraph)
     find_("120", paragraph)
-    find_("1000", paragraph)
     find_("PUMP", paragraph)
     find_("PRS", paragraph)
     find_("TBV", paragraph)
     find_("DER", paragraph)
+    find_("1000", paragraph)
     find_("Jan", paragraph)
     find_("CSU", paragraph)
     find_(':', paragraph)

@@ -5,11 +5,16 @@ import docx
 from docx import Document
 from tkinter import *
 import re
+# from docx2python import docx2python
+import pandas as pd
 
-excelFile = xw.Book()                #Creates an empty excel file
-excelFile.save('report.xlsx')        #Saves that excel file as "data1"
 
-ws1 = excelFile.sheets['Sheet1']
+excelFile = xw.Book("RTM.xlsx")
+excelFile.save('RTM.xlsx')
+#excelFile = xw.Book()                #Creates an empty excel file
+#excelFile.save('report.xlsx')                     #Saves that excel file as "data1"
+
+#ws1 = excelFile.sheets['Sheet1']
 
 #Create a Docx file document object and pass the path to the Docx file
 Text = docx.Document('SRS_ACE_Pump_X01.docx')
@@ -33,17 +38,18 @@ Text = docx.Document('SRS_ACE_Pump_X01.docx')
 #print m.groups()
 fullText = []
 for para in Text.paragraphs:
-    fullText.append(para.text)
+    fullText.append(para.text[])
 
 mystring =' '.join(map(str, fullText))
 print(mystring)
 
-
+#pd.DataFrame(Text.body[1][1:])
 
 
 
 product = "TARGEST"
 name = "NAME"
+coFounder2 = "Adrian"
 title = "TITLE"
 title2 = "Co-Founder"
 
@@ -57,10 +63,34 @@ def find_(paragraph_keyword,paragraph):
 #going in the document.paragraphs using for loop
 for paragraph in Text.paragraphs:
 
+    find_("ACE", paragraph)
     find_("SRS", paragraph)
-    find_("PUMP",paragraph)
+    find_("1", paragraph)
+    find_("2", paragraph)
+    find_("5", paragraph)
+    find_("6", paragraph)
+    find_("10", paragraph)
+    find_("100", paragraph)
+    find_("105", paragraph)
+    find_("110", paragraph)
+    find_("120", paragraph)
+    find_("1000", paragraph)
+    find_("PUMP", paragraph)
+    find_("PRS", paragraph)
+    find_("TBV", paragraph)
+    find_("DER", paragraph)
     find_("Jan", paragraph)
     find_("CSU", paragraph)
+    find_(':', paragraph)
+
+    ws1 = excelFile.sheets['Sheet1']
+    ws1.range('B3').value = coFounder2
+    ws1.range('A5').value = "SRS"
+    ws1.range('A6').value = "PRS"
+    ws1.range('A7').value = "TBV"
+    ws1.range('A8').value = "DER"
+    ws1.range('B5').value = "ACE" + ':' + "SRS" + ':' + "1"
+
 
 user = [re.findall('(?<=SRS: )\w+', s) for s in mystring]
 

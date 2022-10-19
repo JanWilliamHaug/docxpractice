@@ -84,6 +84,7 @@ for paragraph in Text.paragraphs:
     find_(':', paragraph)
 
     ws1 = excelFile.sheets['Sheet1']
+    ws1.range('A3').value = product
     ws1.range('B3').value = coFounder2
     ws1.range('A5').value = "SRS"
     ws1.range('A6').value = "PRS"

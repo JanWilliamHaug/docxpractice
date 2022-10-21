@@ -66,7 +66,9 @@ print(mystring)
 
 product = "TARGEST"
 name = "NAME"
+coFounder1 = "Jan"
 coFounder2 = "Adrian"
+coFounder3 = "Stephania"
 title = "TITLE"
 title2 = "Co-Founder"
 
@@ -102,7 +104,7 @@ for paragraph in Text.paragraphs:
 
     ws1 = excelFile.sheets['Sheet1']
     ws1.range('A3').value = product
-    ws1.range('B3').value = coFounder2
+    ws1.range('B3').value = coFounder1 + ", " + coFounder2 + "," + coFounder3
     ws1.range('A5').value = "SRS"
     ws1.range('A6').value = "SRS"
     ws1.range('A7').value = "SRS"
